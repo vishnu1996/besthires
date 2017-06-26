@@ -1,21 +1,2 @@
-<h1>Callback Page</h1>
-<p><strong> provider: </strong><%= @auth_hash[:provider] %></p>
-<p><strong> User ID: </strong><%= @auth_hash[:uid] %></p>
-<h3>Info:</h3>
-	<p><strong> Description </strong><%= @auth_hash[:info][:description] %></p>
-	<p><strong> Email </strong><%= @auth_hash[:info][:email] %></p>
-	<p><strong> First Name </strong><%= @auth_hash[:info][:first_name] %></p>
-	<p><strong> Last Name </strong><%= @auth_hash[:info][:last_name] %></p>
-	<p><strong> Image </strong><%= @auth_hash[:info][:image] %></p>
-	
-	<h3>Location:</h3>
-		
-	<p><strong> Name </strong><%= @auth_hash[:info][:name] %></p>
-	<p><strong> Nick Name </strong><%= @auth_hash[:info][:nickname] %></p>
-
-<h3>Extra:</h3>
-	<p><strong> Summary </strong><%= @auth_hash[:extra][:raw_info][:summary] %></p>
-
-<% @auth_hash.each do |key,val| %>
-	<%= "\n\n\n#{key} - #{val}" %>
-<% end %>
+<h3>Watson Result</h3>
+<%= @watson_result %>

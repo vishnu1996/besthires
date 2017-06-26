@@ -1,3 +1,6 @@
+require 'json'
+require 'excon'
+
 class OauthController < ApplicationController
   @@config = { 
       :site => 'https://api.linkedin.com',
@@ -5,10 +8,46 @@ class OauthController < ApplicationController
       :request_token_path => '/uas/oauth/requestToken?scope=r_basicprofile',
       :access_token_path => '/uas/oauth/accessToken' 
   }
+
+  def analyze_tone(data)
+    headers = {"content-type"=> "text/plain"}
+    username = 'ef685f83-c521-4ae0-933a-c5070675d337'
+    password = 'ZQkeSVG6qWXL'
+
+    response = Excon.post("https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19",
+    :body => data,
+    :headers => headers,
+    :user => username,
+    :password => password
+    )
+
+    profile = JSON.load(response.body)
+
+    tone_categories = profile['document_tone']['tone_categories']
+    emotion_tones = tone_categories[0]['tones']
+    anger = emotion_tones[0]['score']
+    disgust = emotion_tones[1]['score']
+    fear = emotion_tones[2]['score']
+    joy = emotion_tones[3]['score']
+    sadness = emotion_tones[4]['score']
+    language_tones = tone_categories[1]['tones']
+    analytical = language_tones[0]['score']
+    confident = language_tones[1]['score']
+    tentative = language_tones[2]['score']
+    social_tones = tone_categories[2]['tones']
+    openness = social_tones[0]['score']
+    conscientiousness = social_tones[1]['score']
+    extraversion = social_tones[2]['score']
+    agreeableness = social_tones[3]['score']
+    emotional_range = social_tones[4]['score']
+    line =  "\n anger = " + anger.to_s + ",\n disgust = " + disgust.to_s + ",\n fear = " + fear.to_s + ",\n joy = " + joy.to_s + ",\n sadness = " + sadness.to_s + ",\n analytical = " + analytical.to_s + ",\n confident = " + confident.to_s + ",\n tentative = " + tentative.to_s + ",\n openness = " + openness.to_s + ",\n conscientiousness = " + conscientiousness.to_s + ",\n extraversion = " + extraversion.to_s + ",\n agreeableness = " + agreeableness.to_s + ",\n emotional_range = " + emotional_range.to_s
+  end
+
   def callback
   	begin
       @auth_hash = request.env['omniauth.auth']
-
+      @watson_result = analyze_tone(@auth_hash[:extra][:raw_info][:summary])
+      Rails.logger.debug "\n\n\n #{@watson_result}"
       @auth_hash.each do |key,value|
         Rails.logger.debug "\n #{key} - #{value}"
       end
