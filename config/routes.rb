@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '/auth/:provider/callback', to: 'oauth#callback', as: 'oauth_callback'
+  get '/auth/success', to: 'oauth#success', as: 'oauth_success'
   get '/auth/failure', to: 'oauth#failure', as: 'oauth_failure'
+  match '/watson', to: 'oauth#watson', as: 'watson', via: [:get, :post]
+  match '/logout', to: 'oauth#logout', as: 'session_logout', via: [:get, :delete]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

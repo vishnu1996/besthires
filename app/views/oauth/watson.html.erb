@@ -1,0 +1,89 @@
+<br>
+<%= button_to 'Logout', session_logout_path, method: :delete %> 
+
+<h2>Watson Result</h2>
+
+<div>
+  <div class="summary--emotion">
+    <h5 class="base--h5 summary--header">Emotion</h5>
+    <p class="base--p summary--score-desc">
+      &lt; .5 = not likely present <br> &gt; .5 = likely present <br> &gt; .75 = very likely present <br>
+    </p>
+    <% @emotion_tones_hash.each do |emotion,score| %>
+    	<div class="bar-graph--row summary-emotion-graph--row">
+    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+  				<div class="bar-graph--label">
+    				<p class="base--p">
+      					<%= emotion %>
+    				</p> 
+  				</div>
+			</div>
+		
+    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+	        	<div class="bar-graph--bar">
+	            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_<%=emotion%>" style="width: <%= (score*100) %>%;"></div>
+	          	</div>
+    		</div>
+    		<div class="summary-emotion-graph--percentage-label">
+      			<%= score %>
+    		</div>
+    	</div>
+  	<% end %>
+  </div>
+
+
+  <div class="summary--writing">
+    <h5 class="base--h5 summary--header">Language Style</h5>
+    <p class="base--p summary--score-desc">
+      &lt; .5 = not likely present <br> &gt; .5 = likely present <br> &gt; .75 = very likely present <br>
+    </p>
+    <% @language_tones_hash.each do |emotion,score| %>
+    	<div class="bar-graph--row summary-writing-graph--row">
+    		<div class="bar-graph--label-container summary-writing-graph--label-container">
+  				<div class="bar-graph--label">
+    				<p class="base--p">
+      					<%= emotion %>
+    				</p> 
+  				</div>
+			</div>
+		
+    		<div class="bar-graph--bar-container summary-writing-graph--bar-container">
+	        	<div class="bar-graph--bar">
+	            	<div class="bar-graph--bar-value summary-writing-graph--bar-value summary-writing-graph--bar-value_<%=emotion%>" style="width: <%= (score*100) %>%;"></div>
+	          	</div>
+    		</div>
+    		<div class="summary-writing-graph--percentage-label">
+      			<%= score %>
+    		</div>
+    	</div>
+  	<% end %>
+  </div>
+
+
+  <div class="summary--social">
+    <h5 class="base--h5 summary--header">Social Tendencies</h5>
+    <p class="base--p summary--score-desc">
+      &lt; .5 = not likely present <br> &gt; .5 = likely present <br> &gt; .75 = very likely present <br>
+    </p>
+    <% @social_tones_hash.each do |emotion,score| %>
+    	<div class="bar-graph--row summary-social-graph--row">
+    		<div class="bar-graph--label-container summary-social-graph--label-container">
+  				<div class="bar-graph--label">
+    				<p class="base--p">
+      					<%= emotion %>
+    				</p> 
+  				</div>
+			</div>
+		
+    		<div class="bar-graph--bar-container summary-social-graph--bar-container">
+	        	<div class="bar-graph--bar">
+	            	<div class="bar-graph--bar-value summary-social-graph--bar-value summary-social-graph--bar-value_<%=emotion%>" style="width: <%= (score*100) %>%;"></div>
+	          	</div>
+    		</div>
+    		<div class="summary-social-graph--percentage-label">
+      			<%= score %>
+    		</div>
+    	</div>
+  	<% end %>
+  </div>
+</div>
