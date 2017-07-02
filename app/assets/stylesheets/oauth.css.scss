@@ -1608,6 +1608,11 @@ pre[class*=" language-"] {
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center; }
+  .bar-common-graph--label-container {
+    display: inline-block;
+    width: 13.5rem;
+    margin-right: 0.5rem;
+    vertical-align: middle; }
   .bar-graph--label-container {
     display: inline-block;
     width: 7.5rem;
@@ -1798,13 +1803,32 @@ pre[class*=" language-"] {
       display: block;
       margin-top: 0rem; } }
 
+.summary--common {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  height: 35rem; }
+  @media (min-width: 768px) {
+    .summary--common {
+      width: 30.91489%;
+      margin-left: 0%;
+      margin-right: 2.12766%;
+      float: left;
+      display: block;
+      margin-top: 3rem; } }
+  @media (min-width: 768px) {
+    .summary--common {
+      height: 35rem; } }
+  @media (min-width: 1200px) {
+    .summary--common {
+      height: 35rem; } }
+
 .summary--emotion {
   background-color: #f9f9f9;
   padding: 1rem;
   height: 35rem; }
   @media (min-width: 768px) {
     .summary--emotion {
-      width: 31.91489%;
+      width: 30.91489%;
       margin-left: 0%;
       margin-right: 2.12766%;
       float: left;
@@ -1823,7 +1847,7 @@ pre[class*=" language-"] {
   height: 35rem; }
   @media (min-width: 768px) {
     .summary--writing {
-      width: 31.91489%;
+      width: 30.91489%;
       margin-left: 0%;
       margin-right: 2.12766%;
       float: left;
@@ -1842,7 +1866,7 @@ pre[class*=" language-"] {
   height: 35rem; }
   @media (min-width: 768px) {
     .summary--social {
-      width: 31.91489%;
+      width: 30.91489%;
       margin-left: 0%;
       margin-right: 2.12766%;
       float: left;

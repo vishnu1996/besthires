@@ -25,7 +25,7 @@
 	          	</div>
     		</div>
     		<div class="summary-emotion-graph--percentage-label">
-      			<%= score %>
+      			<%= score.to_s()[0..3] %>
     		</div>
     	</div>
   	<% end %>
@@ -53,7 +53,7 @@
 	          	</div>
     		</div>
     		<div class="summary-writing-graph--percentage-label">
-      			<%= score %>
+      			<%= score.to_s()[0..3] %>
     		</div>
     	</div>
   	<% end %>
@@ -81,9 +81,42 @@
 	          	</div>
     		</div>
     		<div class="summary-social-graph--percentage-label">
-      			<%= score %>
+      			<%= score.to_s()[0..3] %>
     		</div>
     	</div>
   	<% end %>
   </div>
+
+
+
+
+  <% [[@openness_traits_hash, "Openness"], [@conscientiousness_traits_hash, "Conscientiousness"], [@extraversion_traits_hash, "Extraversion"], [@agreeableness_traits_hash, "Agreeableness"], [@emotional_range_traits_hash, "Emotional Range"], [@values_traits_hash, "Values"], [@needs_traits_hash, "Needs"]].each do |traits| %>
+
+    <div class="summary--common">
+      <h5 class="base--h5 summary--header"><%= traits[1] %></h5>
+      <p class="base--p summary--score-desc">
+        &lt; .5 = not likely present <br> &gt; .5 = likely present <br> &gt; .75 = very likely present <br>
+      </p>
+      <% traits[0].each do |emotion,score| %>
+        <div class="bar-graph--row summary-emotion-graph--row">
+          <div class="bar-common-graph--label-container summary-emotion-graph--label-container">
+            <div class="bar-graph--label">
+              <p class="base--p">
+                  <%= emotion %>
+              </p> 
+            </div>
+        </div>
+      
+          <div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+              <div class="bar-graph--bar">
+                  <div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Agreeableness" style="width: <%= (score*100) %>%;"></div>
+                </div>
+          </div>
+          <div class="summary-emotion-graph--percentage-label">
+              <%= score.to_s()[0..3] %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
