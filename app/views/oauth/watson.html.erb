@@ -4,7 +4,7 @@
 <h2>Watson Result</h2>
 
 <div>
-  <div class="summary--common">
+  <div class="summary--emotion">
     <h5 class="base--h5 summary--header">Emotion</h5>
     <p class="base--p summary--score-desc">
       &lt; .5 = not likely present <br> &gt; .5 = likely present <br> &gt; .75 = very likely present <br>
@@ -32,7 +32,7 @@
   </div>
 
 
-  <div class="summary--common">
+  <div class="summary--writing">
     <h5 class="base--h5 summary--header">Language Style</h5>
     <p class="base--p summary--score-desc">
       &lt; .5 = not likely present <br> &gt; .5 = likely present <br> &gt; .75 = very likely present <br>
@@ -60,7 +60,7 @@
   </div>
 
 
-  <div class="summary--common">
+  <div class="summary--social">
     <h5 class="base--h5 summary--header">Social Tendencies</h5>
     <p class="base--p summary--score-desc">
       &lt; .5 = not likely present <br> &gt; .5 = likely present <br> &gt; .75 = very likely present <br>
@@ -92,7 +92,7 @@
 
   <% [[@openness_traits_hash, "Openness"], [@conscientiousness_traits_hash, "Conscientiousness"], [@extraversion_traits_hash, "Extraversion"], [@agreeableness_traits_hash, "Agreeableness"], [@emotional_range_traits_hash, "Emotional Range"], [@values_traits_hash, "Values"], [@needs_traits_hash, "Needs"]].each do |traits| %>
 
-    <div class="summary--common">
+    <div class="summary--emotion">
       <h5 class="base--h5 summary--header"><%= traits[1] %></h5>
       <p class="base--p summary--score-desc">
         &lt; .5 = not likely present <br> &gt; .5 = likely present <br> &gt; .75 = very likely present <br>
