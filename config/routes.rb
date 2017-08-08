@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :resumes, only: [:index, :new, :create, :destroy]
+
   root to: 'home#index'
 
   devise_for :users

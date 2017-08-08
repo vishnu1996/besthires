@@ -52,3 +52,5 @@ gem 'omniauth-linkedin-oauth2', git: 'https://github.com/Devato/omniauth-linkedi
 gem 'linkedin'
 gem 'omniauth-twitter', '~> 1.1.0'
 gem 'twitter'
+gem 'carrierwave', '~> 0.9'
+gem 'bootstrap-sass', '~> 2.3.2'
