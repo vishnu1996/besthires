@@ -38,4 +38,6 @@ Rails.application.configure do
   # config.action_mailer.deliver_method = :smtp
   ENV['LINKEDIN_CLIENT_ID'] = "8196sktbspksp9"
   ENV['LINKEDIN_CLIENT_SECRET'] = "WBvSYefhd2Hn7vVb"
+  ENV['TWITTER_API_KEY'] = "K3NhmoPIYPx5Xt83JiQXq78cU"
+  ENV['TWITTER_API_SECRET'] = "C9rCRLBtArIU9fK9oXcLU7LWzHFcpNNbwLFrstTiYNAonIRK15"
 end

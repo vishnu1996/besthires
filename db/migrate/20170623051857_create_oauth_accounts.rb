@@ -7,6 +7,7 @@ class CreateOauthAccounts < ActiveRecord::Migration
       t.string :image_url
       t.string :profile_url
       t.string :access_token
+      t.string :secret
       t.text :raw_data
       t.timestamps null: false
     end

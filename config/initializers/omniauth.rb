@@ -1,3 +1,4 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   	provider :linkedin, ENV['LINKEDIN_CLIENT_ID'], ENV['LINKEDIN_CLIENT_SECRET'], :scope => 'r_basicprofile r_emailaddress rw_company_admin w_share', :fields => ["id", "first-name", "last-name", "maiden-name", "formatted-name", "phonetic-first-name", "phonetic-last-name", "formatted-phonetic-name", "headline", "location", "industry", "current-share", "num-connections", "num-connections-capped", "summary", "specialties", "positions", "picture-url", "picture-urls", "site-standard-profile-request", "api-standard-profile-request", "public-profile-url", "email-address", "associations", "interests"]
+  	provider :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET']
 end

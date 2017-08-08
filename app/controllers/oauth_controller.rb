@@ -153,12 +153,24 @@ class OauthController < ApplicationController
         :provider => @auth_hash[:provider].to_s(),
         :image_url => @auth_hash[:info][:image].to_s(),
         :profile_url => @auth_hash[:info][:urls][:public_profile].to_s(),
-        :raw_data => @auth_hash[:extra][:raw_info][:summary].to_s
+        :raw_data => @auth_hash[:extra][:raw_info][:summary].to_s(),
+        :access_token => @auth_hash[:credentials][:token].to_s(), 
+        :secret => @auth_hash[:credentials][:secret].to_s()
       })
 
       oauth_account.save
     end
-    redirect_to oauth_success_path
+    # client = Twitter::REST::Client.new do |config|
+    #   config.consumer_key        = ENV['TWITTER_API_KEY']
+    #   config.consumer_secret     = ENV['TWITTER_API_SECRET']
+    #   config.access_token        = @auth_hash[:credentials][:token].to_s()
+    #   config.access_token_secret = @auth_hash[:credentials][:secret].to_s()
+    # end
+    # Rails.logger.debug "#{client}, #{client.home_timeline}"
+    # response = client.require("https://api.twitter.com/1.1/statuses/home_timeline.json")
+    # render :json => response.body
+    recent_tweets
+    # redirect_to oauth_success_path
   end
 
   def success
@@ -175,5 +187,33 @@ class OauthController < ApplicationController
   def logout
     session[:current_user_id] = nil
     redirect_to new_user_session_path
+  end
+
+  def recent_tweets
+        # Exchange your oauth_token and oauth_token_secret for an AccessToken instance.
+
+    def prepare_access_token(oauth_token, oauth_token_secret)
+        consumer = OAuth::Consumer.new(ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET'],
+            { :site => "https://api.twitter.com"
+            })
+        # now create the access token object from passed values
+        token_hash = { :oauth_token => oauth_token,
+                                     :oauth_token_secret => oauth_token_secret
+                                 }
+        access_token = OAuth::AccessToken.from_hash(consumer, token_hash )
+        return access_token
+    end
+
+    auth = OauthAccount.find_by(:uid => session[:current_user_id], :provider => 'twitter')
+
+    # Exchange our oauth_token and oauth_token secret for the AccessToken instance.
+    Rails.logger.debug "\n\n#{auth['access_token']}, #{auth['secret']}"
+    access_token = prepare_access_token(auth['access_token'], auth['secret'])
+    Rails.logger.debug "\n\n#{access_token}"
+
+    # use the access token as an agent to get the home timeline
+    response = access_token.request(:get, "https://api.twitter.com/1.1/statuses/user_timeline.json?count=800&exclude_replies=true&trim_user=true")
+
+    render :json => response.body
   end
 end

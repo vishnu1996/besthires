@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170623051857) do
     t.string   "image_url"
     t.string   "profile_url"
     t.string   "access_token"
+    t.string   "secret"
     t.text     "raw_data"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
