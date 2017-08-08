@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623051857) do
+ActiveRecord::Schema.define(version: 20170808143519) do
 
   create_table "oauth_accounts", force: true do |t|
     t.integer  "user_id"
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20170623051857) do
     t.string   "image_url"
     t.string   "profile_url"
     t.string   "access_token"
-    t.string   "secret"
     t.text     "raw_data"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "secret"
   end
 
   add_index "oauth_accounts", ["user_id"], name: "index_oauth_accounts_on_user_id"
