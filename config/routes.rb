@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/auth/success', to: 'oauth#success', as: 'oauth_success'
   get '/auth/failure', to: 'oauth#failure', as: 'oauth_failure'
   match '/watson', to: 'oauth#watson', as: 'watson', via: [:get, :post]
+  match '/watson_from_resume', to: 'oauth#watson_from_resume', as: 'watson_from_resume', via: [:get, :post]
   match '/logout', to: 'oauth#logout', as: 'session_logout', via: [:get, :delete]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

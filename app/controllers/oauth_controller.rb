@@ -5,8 +5,8 @@ class OauthController < ApplicationController
     end
 
     headers = {"content-type"=> "text/plain"}
-    username = '5c47845f-324e-4bd9-a28a-f5e66bc3c85f'
-    password = 'cvQyB31FdHY7'
+    username = '42032262-0722-4258-a638-09933abfcb8a'
+    password = 'PjmnftyEciKh'
 
     response = Excon.post("https://gateway.watsonplatform.net/personality-insights/api/v3/profile?version=2016-10-20",
       :body => data,
@@ -93,8 +93,8 @@ class OauthController < ApplicationController
 
   def analyze_tone(data)
     headers = {"content-type"=> "text/plain"}
-    username = 'ef685f83-c521-4ae0-933a-c5070675d337'
-    password = 'ZQkeSVG6qWXL'
+    username = '02a04986-5453-4f87-a1da-09a145f7a56e'
+    password = 'HJ1BZ6T53wWV'
 
     response = Excon.post("https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19",
       :body => data,
@@ -140,6 +140,19 @@ class OauthController < ApplicationController
     end
   end
 
+  def watson_from_resume
+    @resume = Resume.find(params[:resume_id])
+    resume_file_name = @resume.attachment.file.file
+    resume_data = Yomu.new resume_file_name
+    resume_data = resume_data.text
+    resume_data = resume_data.gsub("\t", " ")
+    resume_data = resume_data.gsub("\n", " ")
+    Rails.logger.debug "#{@resume.attachment.file.file}"
+    analyze_tone(resume_data)
+    personality_insights(resume_data)
+    render :template => "oauth/watson"
+  end
+
   def callback
     @auth_hash = request.env['omniauth.auth']
     session[:current_user_id] = @auth_hash[:uid]
@@ -169,7 +182,12 @@ class OauthController < ApplicationController
     # Rails.logger.debug "#{client}, #{client.home_timeline}"
     # response = client.require("https://api.twitter.com/1.1/statuses/home_timeline.json")
     # render :json => response.body
-    recent_tweets
+    if @auth_hash[:provider] == "twitter"
+      recent_tweets
+    elsif @auth_hash[:provider] == "linkedin"
+      redirect_to oauth_success_path
+    end
+    # recent_tweets
     # redirect_to oauth_success_path
   end
 
