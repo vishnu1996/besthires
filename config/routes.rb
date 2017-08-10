@@ -11,6 +11,16 @@ Rails.application.routes.draw do
   match '/watson', to: 'oauth#watson', as: 'watson', via: [:get, :post]
   match '/watson_from_resume', to: 'oauth#watson_from_resume', as: 'watson_from_resume', via: [:get, :post]
   match '/logout', to: 'oauth#logout', as: 'session_logout', via: [:get, :delete]
+
+
+  resource :password, only: %w( new create edit update ), path_names: { edit: 'reset' }
+  resources :users, only: %w( new create edit update )
+  resources :sessions, only: %w( new create destroy )
+  get :success, to: 'sessions#success'
+  get :logout, to: 'sessions#destroy'
+  get :login, to: 'sessions#new'
+  get :signup, to: 'users#new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

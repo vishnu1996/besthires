@@ -21,3 +21,13 @@
 
 en:
   hello: "Hello world"
+  title: "Best Hires"
+  sign_in: "Sign in to Besthires"
+  sign_up: Sign Up for free
+  remember_me: "Remember me"
+  password: "Password"
+  forgot_password: "Forgot Password?"
+  check_fields: 'Please review the following fields:'
+  choose_country: Choose Country
+  password_hint: Should be at least 6 characters long and contain at least one uppercase letter and one number.
+
