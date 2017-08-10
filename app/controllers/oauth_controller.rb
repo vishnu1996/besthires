@@ -144,13 +144,14 @@ class OauthController < ApplicationController
     @resume = Resume.find(params[:resume_id])
     s3 = AWS::S3.new
     bucket = s3.buckets['besthires-production']
-    resume_file_name = @resume.attachment.file.file
-    resume_data = Yomu.new resume_file_name
-    resume_data = resume_data.text
-    # resume_doc = bucket.objects[resume_file_name]
-    # Rails.logger.debug "#{resume_doc.read}"
-    # resume_data = pdf_to_text(resume_doc.read)
-    # resume_data = resume_data.text
+    resume_file_name = @resume.attachment_identifier
+    resume_file_obj = bucket.objects[resume_file_name]
+    resume_url = resume_file_obj.public_url
+    doc = Docx::Document.open(open(resume_url).path)
+    resume_data = ""
+    doc.paragraphs.each do |p|
+      resume_data = resume_data + p.to_s +" "
+    end
     resume_data = resume_data.gsub("\t", " ")
     resume_data = resume_data.gsub("\n", " ")
     Rails.logger.debug "#{@resume.attachment.file.file}"
