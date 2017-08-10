@@ -1,0 +1,25 @@
+<%= title(t(:my_profile)) %>
+
+<%= simple_form_for @user do |form| %>
+  <%= error_messages_for(@user) %>
+
+  <!-- Name -->
+  <%= form.input :first_name %>
+  <%= form.input :last_name %>
+
+
+  <!-- Location -->
+  <%= form.input :city %>
+  <%= form.input :state %>
+  <%= form.input :country, as: :select, collection: Country.options_for_select, selected: @user.country, prompt: t(:choose_country) %>
+  <!-- Password -->
+  <h3>
+    <%= t(:change_password) %>
+  </h3>
+
+  <%= form.input :current_password %>
+  <%= form.input :password, validate: true, label: t(:new_password), hint: t(:password_hint) %>
+  <%= form.input :password_confirmation, label: t(:new_password_confirmation) %>
+
+  <%= form.button :submit, t(:save) %>
+<% end %>

@@ -1,0 +1,23 @@
+@media (max-width: $mobile-breakpoint) {
+  .main-header .navbar-brand {
+    padding-left: 2%;
+  }
+  .main-header .user-nav {
+    .avatar {
+      display: none;
+    }
+    .dropdown-toggle {
+      padding-right: 0;
+    }
+  }
+  .main-footer,
+  .main-content {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .main-footer p.copyright,
+  .main-footer p.powered-by {
+    float: none;
+    text-align: center;
+  }
+}
