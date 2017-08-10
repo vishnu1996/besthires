@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :resumes, only: [:index, :new, :create, :destroy]
 
-  root to: 'home#index'
+  root to: 'sessions#new'
 
   devise_for :users
 
@@ -16,10 +16,15 @@ Rails.application.routes.draw do
   resource :password, only: %w( new create edit update ), path_names: { edit: 'reset' }
   resources :users, only: %w( new create edit update )
   resources :sessions, only: %w( new create destroy )
+
+  
+  get :user_sign_in, to: 'candidates#sign_in'
+
   get :success, to: 'sessions#success'
   get :logout, to: 'sessions#destroy'
   get :login, to: 'sessions#new'
   get :signup, to: 'users#new'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
