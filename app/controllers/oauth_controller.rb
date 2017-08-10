@@ -150,7 +150,8 @@ class OauthController < ApplicationController
     doc = Docx::Document.open(open(resume_url).path)
     resume_data = ""
     doc.paragraphs.each do |p|
-      resume_data = resume_data + p.to_s +" "
+      resume_data = resume_data + p.to_s
+      resume_data += " "
     end
     resume_data = resume_data.gsub("\t", " ")
     resume_data = resume_data.gsub("\n", " ")
