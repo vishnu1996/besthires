@@ -142,8 +142,10 @@ class OauthController < ApplicationController
 
   def watson_from_resume
     @resume = Resume.find(params[:resume_id])
-    resume_file_name = @resume.attachment.file.file
-    resume_data = Yomu.new resume_file_name
+    s3 = AWS::S3.new
+    bucket = s3.buckets['besthires']
+    resume_file_name = @resume.attachment_identifier
+    resume_data = Yomu.new bucket.objects[resume_file_name]
     resume_data = resume_data.text
     resume_data = resume_data.gsub("\t", " ")
     resume_data = resume_data.gsub("\n", " ")
