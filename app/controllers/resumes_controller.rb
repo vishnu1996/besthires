@@ -30,7 +30,7 @@ class ResumesController < ApplicationController
 end
 
 class S3Store
-  BUCKET = "besthires".freeze
+  BUCKET = "besthires-production".freeze
 
   def initialize file
     @file = file
