@@ -143,10 +143,16 @@ class OauthController < ApplicationController
   def watson_from_resume
     @resume = Resume.find(params[:resume_id])
     s3 = AWS::S3.new
-    bucket = s3.buckets['besthires']
+    bucket = s3.buckets['besthires-production']
     resume_file_name = @resume.attachment_identifier
-    resume_data = Yomu.new bucket.objects[resume_file_name]
-    resume_data = resume_data.text
+    resume_file_obj = bucket.objects[resume_file_name]
+    resume_url = resume_file_obj.public_url
+    doc = Docx::Document.open(open(resume_url).path)
+    resume_data = ""
+    doc.paragraphs.each do |p|
+      resume_data = resume_data + p.to_s
+      resume_data += " "
+    end
     resume_data = resume_data.gsub("\t", " ")
     resume_data = resume_data.gsub("\n", " ")
     Rails.logger.debug "#{@resume.attachment.file.file}"
@@ -235,5 +241,17 @@ class OauthController < ApplicationController
     response = access_token.request(:get, "https://api.twitter.com/1.1/statuses/user_timeline.json?count=800&exclude_replies=true&trim_user=true")
 
     render :json => response.body
+  end
+
+  def pdf_to_text(pdf_filename)
+    Docsplit.extract_text([pdf_filename], ocr: false, output: Dir.tmpdir)
+
+    txt_file = File.basename(pdf_filename, File.extname(pdf_filename)) + '.txt'
+    txt_filename = Dir.tmpdir + '/' + txt_file
+
+    extracted_text = File.read(txt_filename)
+    File.delete(txt_filename)
+
+    extracted_text
   end
 end

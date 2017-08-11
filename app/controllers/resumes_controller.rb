@@ -10,6 +10,12 @@ class ResumesController < ApplicationController
 	def create
 		@resume = Resume.new(resume_params)
 		s3_resume = S3Store.new(params[:resume][:attachment]).store
+		Rails.logger.debug "}}}}}}}}}}}}}"
+		Rails.logger.debug "***********"
+		Rails.logger.debug "\n\n#{params[:resume][:attachment].read}\n\n"
+		Rails.logger.debug "\n\n#{params[:resume][:attachment].tempfile.read}\n\n"
+		Rails.logger.debug "***********"
+
 		if @resume.save
 		 redirect_to resumes_path, notice: "The resume #{@resume.name} has been uploaded."
 		else
@@ -30,7 +36,7 @@ class ResumesController < ApplicationController
 end
 
 class S3Store
-  BUCKET = "besthires".freeze
+  BUCKET = "besthires-production".freeze
 
   def initialize file
     @file = file
@@ -39,7 +45,15 @@ class S3Store
   end
 
   def store
+  	Rails.logger.debug "*******"
+  	Rails.logger.debug "#{@file.tempfile}"
+  	Rails.logger.debug "*******"
+
     @obj = @bucket.objects[filename].write(@file.tempfile, acl: :public_read)
+    Rails.logger.debug "*******"
+  	Rails.logger.debug "#{@obj}"
+  	Rails.logger.debug "*******"
+  	
     self
   end
 
