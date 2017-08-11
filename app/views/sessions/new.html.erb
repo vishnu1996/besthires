@@ -89,6 +89,7 @@
 <body class="signin">
 	<div class="sign-in-page">
 	<%= form_for :session, url: sessions_path do |form| %>
+		<%= error_messages_for(@session) %>
         <fieldset>
           <div class="control-group">
           	<div class="controls">
