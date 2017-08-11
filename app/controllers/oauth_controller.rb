@@ -1,6 +1,6 @@
 class OauthController < ApplicationController
   def personality_insights(data)
-    while data.length().to_i() < 600 do
+    while data.gsub(/[^-a-zA-Z]/, ' ').split(' ').size < 600 do
       data = data + data
     end
 
@@ -16,6 +16,7 @@ class OauthController < ApplicationController
     )
 
     profile = JSON.load(response.body)
+    Rails.logger.debug "\n\ndata: #{data}\n\n profile: #{profile}"
 
     personality_category = profile['personality']
 
@@ -155,7 +156,6 @@ class OauthController < ApplicationController
     end
     resume_data = resume_data.gsub("\t", " ")
     resume_data = resume_data.gsub("\n", " ")
-    Rails.logger.debug "#{@resume.attachment.file.file}"
     analyze_tone(resume_data)
     personality_insights(resume_data)
     render :template => "oauth/watson"
@@ -181,15 +181,7 @@ class OauthController < ApplicationController
 
       oauth_account.save
     end
-    # client = Twitter::REST::Client.new do |config|
-    #   config.consumer_key        = ENV['TWITTER_API_KEY']
-    #   config.consumer_secret     = ENV['TWITTER_API_SECRET']
-    #   config.access_token        = @auth_hash[:credentials][:token].to_s()
-    #   config.access_token_secret = @auth_hash[:credentials][:secret].to_s()
-    # end
-    # Rails.logger.debug "#{client}, #{client.home_timeline}"
-    # response = client.require("https://api.twitter.com/1.1/statuses/home_timeline.json")
-    # render :json => response.body
+
     if @auth_hash[:provider] == "twitter"
       recent_tweets
     elsif @auth_hash[:provider] == "linkedin"
@@ -201,7 +193,7 @@ class OauthController < ApplicationController
 
   def success
     if session[:current_user_id] == nil
-       flash[:alert] = "Unauthorized access"
+      flash[:alert] = "Unauthorized access"
       redirect_to new_user_session_path
     end
   end
@@ -233,14 +225,22 @@ class OauthController < ApplicationController
     auth = OauthAccount.find_by(:uid => session[:current_user_id], :provider => 'twitter')
 
     # Exchange our oauth_token and oauth_token secret for the AccessToken instance.
-    Rails.logger.debug "\n\n#{auth['access_token']}, #{auth['secret']}"
     access_token = prepare_access_token(auth['access_token'], auth['secret'])
-    Rails.logger.debug "\n\n#{access_token}"
 
     # use the access token as an agent to get the home timeline
     response = access_token.request(:get, "https://api.twitter.com/1.1/statuses/user_timeline.json?count=800&exclude_replies=true&trim_user=true")
 
-    render :json => response.body
+    json_response = JSON.load(response.body)
+    data = ""
+
+    json_response.each do |tweet_obj|
+      data += tweet_obj["text"]
+      data += " "
+    end
+    
+    analyze_tone(data)
+    personality_insights(data)
+    render :template => "oauth/watson"
   end
 
   def pdf_to_text(pdf_filename)
