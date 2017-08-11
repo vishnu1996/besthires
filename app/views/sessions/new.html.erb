@@ -41,7 +41,7 @@
 		  color: #2d2d2d;
 		  color: var(--black);
 		}
-		.sign-in-button {
+		.sign-in-btn {
 		  width: 155px;
 		  height: 34px;
 		  border-radius: 4px;
@@ -52,7 +52,7 @@
 		  font-family: Poppins;
 		  font-size: 14px;
 		  line-height: 1;
-		  text-align: left;
+		  text-align: center;
 		  color: #ffffff;
 		  font-weight: 575;
 		}
@@ -79,6 +79,7 @@
 		  width: 2560px;
   		  height: 1440px;
   		  background-color: #efefef;
+  		  text-decoration: none;
 		}
 		.text-right{
 			padding: 40%;
@@ -114,7 +115,7 @@
           <div class="control-group">
             <!-- Button -->
             <div class="controls">
-              <%= form.submit t(:sign_in), class:"sign-in-button"%> 
+              <%= form.submit t(:sign_in), class:"sign-in-btn"%> 
             </div>
           </div>
           <div class="control-group">

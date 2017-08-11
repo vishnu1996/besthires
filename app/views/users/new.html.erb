@@ -38,10 +38,9 @@
       line-height: 1;
       text-align: left;
       color: #2d2d2d;
-      color: var(--black);
     }
-    .sign-in-button {
-      width: 155px;
+    .sign-up-btn {
+      width: 124px;
       height: 34px;
       border-radius: 4px;
       background-color: #2e9cf4;
@@ -51,7 +50,7 @@
       font-family: Poppins;
       font-size: 14px;
       line-height: 1;
-      text-align: left;
+      text-align: center;
       color: #ffffff;
       font-weight: 575;
     }
@@ -76,13 +75,13 @@
     }
     .link-url{
       width: 2560px;
-        height: 1440px;
-        background-color: #efefef;
+      height: 1440px;
+      background-color: #efefef;
+      text-decoration: none;
     }
     .text-right{
       padding: 40%;
     }
-
   </style>
 </head>
 <body class="signin">
@@ -91,10 +90,7 @@
         <fieldset>
           <div class="control-group">
             <div class="controls">
-              <label class="sign-in-lbl">Sign Up</label>
-              <label class="text-right">
-                <%= link_to t(:forgot_password), new_password_path, class: 'link-url'%>
-              </label>
+              <label class="sign-in-lbl">Create your Besthires account</label>
             </div>
           </div>    
            <%= error_messages_for(@user) %>
@@ -129,19 +125,19 @@
 
           <div class="control-group">
             <div class="controls">
-              <%= form.password_field :password_confirmation, placeholder: "Password Confirmation", validate: true, hint: t(:password_hint), class: "input-text-box"%>
+              <%= form.password_field :password_confirmation, placeholder: "Re-type Password", validate: true, hint: t(:password_hint), class: "input-text-box"%>
             </div>
           </div>
 
           <div class="control-group">
             <!-- Button -->
             <div class="controls">
-              <%= form.submit t(:sign_up), class:"sign-in-button"%> 
+              <%= form.submit t(:sign_up), class:"sign-up-btn"%> 
             </div>
           </div>
           <div class="control-group">
             <div class="controls">
-              <label>Have an account? <%= link_to t(:log_in), login_path, class: 'secondary-action' %></label>
+              <label><%= t(:have_an_account)%> <%= link_to 'Sign in', login_path, class: 'link-url' %></label>
             </div>
           </div>
         </fieldset>

@@ -23,7 +23,8 @@ en:
   hello: "Hello world"
   title: "Best Hires"
   sign_in: "Sign in to Besthires"
-  sign_up: Sign Up for free
+  sign_up: Create Account
+  have_an_account: Already have an account?
   remember_me: "Remember me"
   password: "Password"
   forgot_password: "Forgot Password?"
