@@ -29,6 +29,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def candidate_view
+
+  end
+
   private
 
   def user_params

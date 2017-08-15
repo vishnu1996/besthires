@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resource :password, only: %w( new create edit update ), path_names: { edit: 'reset' }
   resources :users, only: %w( new create edit update )
+  get 'users/:user_id/candidate/:candidate_id', to: 'users#candidate_view'
   resources :sessions, only: %w( new create destroy )
 
   
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   get :success, to: 'sessions#success'
   get :logout, to: 'sessions#destroy'
   get :login, to: 'sessions#new'
+  get :settings, to: 'sessions#settings'
   get :signup, to: 'users#new'
 
 
