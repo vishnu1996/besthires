@@ -51,6 +51,9 @@ class SessionsController < ApplicationController
   def success
   end
 
+  def settings
+  end
+
   def destroy
     if logged_in_as?
       log_out_as

@@ -1,1 +1,577 @@
-<h1>Logged in successfully</h1>
+<html>
+<head>
+<style>
+
+	.default-li {
+	    color: inherit;
+	}
+	.selected-li {
+		color: #2e9cf4;
+	}
+	.stylish-input-group .input-group-addon{
+	    background: white !important; 
+	}
+	.stylish-input-group .form-control{
+		border-right:0; 
+		box-shadow:0 0 0; 
+		border-color:#ccc;
+	}
+	.stylish-input-group button{
+	    border:0;
+	    background:transparent;
+	}
+	.user-snapshot-container{
+		background-color: white;
+		border-radius: 2px;
+	}
+	.user-snapshot-container:hover {
+	  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+	}
+</style>
+</head>
+<body class="main-page">
+	<div class="page-content">
+		<div class="row" style="margin-top:3%">
+		  <div class="col-md-2 col-md-offset-1">
+		  	<h4><b>Besthires</b></h4>
+		  </div>
+		  <div class="col-md-8">
+		  	<div class="row">
+			  	<div class= "col-md-2">
+			  		<button class="btn btn-primary"><span class="glyphicon glyphicon-filter"></span> Filters | 4</button>
+			  	</div>
+			  	<div class= "col-md-3">
+		            <select class="form-control" id="user_id" name="user[id]">
+		              	<option value="">Comparison</option>
+						<option value="1">Front end team only</option>
+					</select>
+			  	</div>
+			  	<div class= "col-md-3 col-md-offset-1">
+			  		<select class="form-control" id="user_id" name="user[id]">
+		              	<option value="">Sort</option>
+						<option value="1">Newest First</option>
+					</select>
+			  	</div>
+			  	<div class= "col-md-3">
+	                <div class="input-group stylish-input-group">
+	                    <input type="text" class="form-control"  placeholder="Search" >
+	                    <span class="input-group-addon">
+	                        <button type="submit">
+	                            <span class="glyphicon glyphicon-search"></span>
+	                        </button>  
+	                    </span>
+	                </div>
+			  	</div>
+			  </div>
+		  </div>
+		</div>
+    	<div class="row">
+		  <div class="col-md-2 col-md-offset-1">
+		  	<div class="sidebar content-box" style="display: block;">
+                <ul class="nav">
+                    <!-- Main menu -->
+                    <li class="submenu">
+                         <a href="#" class="selected-li">
+                            <i class="glyphicon glyphicon-plus-sign" class=""></i> Candidates
+                            <span class="glyphicon-plus pull-right"></span>
+                         </a>
+                         <!-- Sub menu -->
+                         <ul>
+                            <li><a href="#" class="selected-li">All</a></li>
+                            <li><a href="#" class="default-li">Liked</a></li>
+                            <li><a href="#" class="default-li">Archived</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="default-li"><i class="glyphicon glyphicon-user"></i> Employees</a></li>
+                    <li><a href="#" class="default-li"><i class="glyphicon glyphicon-asterisk"></i> Team</a></li>
+                    <li><a href="#" class="default-li"><i class="glyphicon glyphicon-th"></i> Company</a></li>
+                </ul>
+             </div>
+             </br>
+             <div class="sidebar content-box" style="display: block;">
+                <ul class="nav">
+                	<li><a href="#" class="default-li"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+                    <li><a href="#" class="default-li"><i class="glyphicon glyphicon-download-alt"></i> Extensions</a></li>
+                    <li><a href="#" class="default-li"><i class="glyphicon glyphicon-off"></i> Sign Out</a></li>
+                </ul>
+             </div>
+		  </div>
+		  <div class="col-md-8">
+
+		  	<div class="row">
+  				<div class="col-md-6">
+  					<div class="container-fluid user-snapshot-container">
+  						<div class="row">
+  							<div class="col-md-6">
+  								<label class="user-name">AndreaKim</label>
+  								</br>
+  								<small>Software Engineer</small>
+  							</div>
+  							<div class="col-md-1 col-md-offset-3">
+  								<i class="glyphicon glyphicon-thumbs-up" style="color:blue;"></i>
+  							</div>
+  							<div class="col-md-1">
+  								<i class="glyphicon glyphicon-warning-sign"></i>
+  							</div>
+  						</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Anger
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Anger" style="width: 11.3741%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.11
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Disgust
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Disgust" style="width: 2.5322999999999998%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.02
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Fear
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Fear" style="width: 9.708%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.09
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Joy
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Joy" style="width: 21.4352%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.21
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Sadness
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Sadness" style="width: 21.4038%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.21
+				    		</div>
+				    	</div>
+				  </div>
+  				</div>
+  				<div class="col-md-6">
+  					<div class="container-fluid user-snapshot-container">
+  						<div class="row">
+  							<div class="col-md-6">
+  								<label class="user-name">AndreaKim</label>
+  								</br>
+  								<small>Software Engineer</small>
+  							</div>
+  							<div class="col-md-1 col-md-offset-3">
+  								<i class="glyphicon glyphicon-thumbs-up" style="color:blue;"></i>
+  							</div>
+  							<div class="col-md-1">
+  								<i class="glyphicon glyphicon-warning-sign"></i>
+  							</div>
+  						</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Anger
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Anger" style="width: 11.3741%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.11
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Disgust
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Disgust" style="width: 2.5322999999999998%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.02
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Fear
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Fear" style="width: 9.708%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.09
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Joy
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Joy" style="width: 21.4352%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.21
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Sadness
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Sadness" style="width: 21.4038%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.21
+				    		</div>
+				    	</div>
+				  </div>
+  				</div>
+  			</div>
+
+  			<div class="row">
+  				<div class="col-md-6">
+  					<div class="container-fluid user-snapshot-container">
+  						<div class="row">
+  							<div class="col-md-6">
+  								<label class="user-name">AndreaKim</label>
+  								</br>
+  								<small>Software Engineer</small>
+  							</div>
+  							<div class="col-md-1 col-md-offset-3">
+  								<i class="glyphicon glyphicon-thumbs-up" style="color:blue;"></i>
+  							</div>
+  							<div class="col-md-1">
+  								<i class="glyphicon glyphicon-warning-sign"></i>
+  							</div>
+  						</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Anger
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Anger" style="width: 11.3741%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.11
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Disgust
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Disgust" style="width: 2.5322999999999998%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.02
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Fear
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Fear" style="width: 9.708%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.09
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Joy
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Joy" style="width: 21.4352%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.21
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Sadness
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Sadness" style="width: 21.4038%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.21
+				    		</div>
+				    	</div>
+				  </div>
+  				</div>
+  				<div class="col-md-6">
+  					<div class="container-fluid user-snapshot-container">
+  						<div class="row">
+  							<div class="col-md-6">
+  								<label class="user-name">AndreaKim</label>
+  								</br>
+  								<small>Software Engineer</small>
+  							</div>
+  							<div class="col-md-1 col-md-offset-3">
+  								<i class="glyphicon glyphicon-thumbs-up" style="color:blue;"></i>
+  							</div>
+  							<div class="col-md-1">
+  								<i class="glyphicon glyphicon-warning-sign"></i>
+  							</div>
+  						</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Anger
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Anger" style="width: 11.3741%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.11
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Disgust
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Disgust" style="width: 2.5322999999999998%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.02
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Fear
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Fear" style="width: 9.708%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.09
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Joy
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Joy" style="width: 21.4352%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.21
+				    		</div>
+				    	</div>
+				    	<div class="bar-graph--row summary-emotion-graph--row">
+				    		<div class="bar-graph--label-container summary-emotion-graph--label-container">
+				  				<div class="bar-graph--label">
+				    				<p class="base--p">
+				      					Sadness
+				    				</p> 
+				  				</div>
+							</div>
+						
+				    		<div class="bar-graph--bar-container summary-emotion-graph--bar-container">
+					        	<div class="bar-graph--bar">
+					            	<div class="bar-graph--bar-value summary-emotion-graph--bar-value summary-emotion-graph--bar-value_Sadness" style="width: 21.4038%;"></div>
+					          	</div>
+				    		</div>
+				    		<div class="summary-emotion-graph--percentage-label">
+				      			0.21
+				    		</div>
+				    	</div>
+				  </div>
+  				</div>
+  			</div>
+  			<div class="content-box-large">
+  				<div class="panel-heading">
+					<div class="panel-title">Responsive Tables</div>
+				</div>
+  				<div class="panel-body">
+  					<div class="table-responsive">
+  						<table class="table">
+			              <thead>
+			                <tr>
+			                  <th>#</th>
+			                  <th>First Name</th>
+			                  <th>Last Name</th>
+			                  <th>Username</th>
+			                </tr>
+			              </thead>
+			              <tbody>
+			                <tr>
+			                  <td>1</td>
+			                  <td>Mark</td>
+			                  <td>Otto</td>
+			                  <td>@mdo</td>
+			                </tr>
+			                <tr>
+			                  <td>2</td>
+			                  <td>Jacob</td>
+			                  <td>Thornton</td>
+			                  <td>@fat</td>
+			                </tr>
+			                <tr>
+			                  <td>3</td>
+			                  <td>Larry</td>
+			                  <td>the Bird</td>
+			                  <td>@twitter</td>
+			                </tr>
+			              </tbody>
+			            </table>
+  					</div>
+  				</div>
+  			</div>
+		  </div>
+		</div>
+    </div>
+</body>
+</html>

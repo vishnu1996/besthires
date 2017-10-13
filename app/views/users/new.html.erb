@@ -2,130 +2,51 @@
 <html>
 <head>
   <style>
-    .main-content {
-      position: relative;
-      padding: $standard-spacing 0;
-      &.with-breadcrumb {
-        padding-top: 76px;
-      }
-    }
-    .signin {
-      background-color: #efefef;
-      text-align: left;
-      vertical-align: center;
-    }
-    .sign-in-page{
-      width: 360px;
-        padding: 8% 0 0;
-        margin: auto;
-    }
-    .input-text-box {
-      width: 400px;
-      height: 38px;
-      border-radius: 4px;
-      background-color: #ffffff;
-      border: solid 1px #e9e9e9;
-    }
-    .input-text-box::placeholder {
-        padding-left: 3px;
-    }
-    .sign-in-lbl {
-      width: 69px;
-      height: 20px;
-      font-family: Poppins;
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 1;
-      text-align: left;
-      color: #2d2d2d;
-    }
-    .sign-up-btn {
-      width: 124px;
-      height: 34px;
-      border-radius: 4px;
-      background-color: #2e9cf4;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.19);
-      border: solid 1px #2e9cf4;
 
-      font-family: Poppins;
-      font-size: 14px;
-      line-height: 1;
-      text-align: center;
-      color: #ffffff;
-      font-weight: 575;
-    }
-    .form {
-      position: relative;
-      z-index: 1;
-      background: #FFFFFF;
-      max-width: 360px;
-      margin: 0 auto 100px;
-      padding: 45px;
-      text-align: center;
-      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    }
-    .signup-msg-lbl{
-      width: 306px;
-      height: 14px;
-      font-family: Poppins;
-      font-size: 14px;
-      line-height: 1;
-      text-align: left;
-      color: #2d2d2d;
-    }
-    .link-url{
-      width: 2560px;
-      height: 1440px;
-      background-color: #efefef;
-      text-decoration: none;
-    }
-    .text-right{
-      padding: 40%;
-    }
   </style>
 </head>
-<body class="signin">
+<body class="main-page">
   <div class="sign-in-page">
   <%= form_for @user do |form| %>
         <fieldset>
           <div class="control-group">
             <div class="controls">
-              <label class="sign-in-lbl">Create your Besthires account</label>
+              <span class="sign-in-lbl">Create your Besthires account</span>
             </div>
           </div>    
            <%= error_messages_for(@user) %>
           <div class="control-group">
             <div class="controls">
-              <%= form.text_field :first_name, placeholder: "First Name", class: "input-text-box"%>
+              <%= form.text_field :first_name, placeholder: "First Name", class: "form-control"%>
             </div>
           </div>
 
           <div class="control-group">
             <div class="controls">
-              <%= form.text_field :last_name, placeholder: "Last Name", class: "input-text-box"%>
+              <%= form.text_field :last_name, placeholder: "Last Name", class: "form-control"%>
             </div>
           </div>
 
           <div class="control-group">
             <div class="controls">
-              <%= form.collection_select :id, Country.all, :id, :display_name, {:include_blank => 'Select a Country'}, {:class => 'input-text-box'} %>
+              <%= form.collection_select :id, Country.all, :id, :display_name, {:include_blank => 'Select a Country'}, {:class => 'form-control'} %>
             </div>
           </div>
           <div class="control-group">
             <div class="controls">
-              <%= form.text_field :email ,placeholder: "Email",  error: form.object.errors[:email].first.try(:html_safe), validate: true, class: "input-text-box"%>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <div class="controls">
-              <%= form.password_field :password, placeholder: "Password", validate: true, hint: t(:password_hint), class: "input-text-box"%>
+              <%= form.text_field :email ,placeholder: "Email",  error: form.object.errors[:email].first.try(:html_safe), validate: true, class: "form-control"%>
             </div>
           </div>
 
           <div class="control-group">
             <div class="controls">
-              <%= form.password_field :password_confirmation, placeholder: "Re-type Password", validate: true, hint: t(:password_hint), class: "input-text-box"%>
+              <%= form.password_field :password, placeholder: "Password", validate: true, hint: t(:password_hint), class: "form-control"%>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <%= form.password_field :password_confirmation, placeholder: "Re-type Password", validate: true, hint: t(:password_hint), class: "form-control"%>
             </div>
           </div>
 
@@ -137,7 +58,7 @@
           </div>
           <div class="control-group">
             <div class="controls">
-              <label><%= t(:have_an_account)%> <%= link_to 'Sign in', login_path, class: 'link-url' %></label>
+              <span><%= t(:have_an_account)%> <%= link_to 'Sign in', login_path, class: 'link-url' %></span>
             </div>
           </div>
         </fieldset>

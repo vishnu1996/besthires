@@ -16,6 +16,12 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+
+
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'rails_bootstrap_navbar'
+gem 'autoprefixer-rails'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -47,7 +53,6 @@ gem 'linkedin'
 gem 'omniauth-twitter', '~> 1.1.0'
 gem 'twitter'
 gem 'carrierwave', '~> 0.9'
-gem 'bootstrap-sass', '~> 2.3.2'
 gem 'yomu'
 gem 'aws-sdk', '~> 1.67.0'
 gem 'docx'

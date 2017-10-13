@@ -152,7 +152,15 @@ class OauthController < ApplicationController
     resume_file_name = @resume.attachment_identifier
     resume_file_obj = bucket.objects[resume_file_name]
     resume_url = resume_file_obj.public_url
-    doc = Docx::Document.open(open(resume_url).path)
+    begin
+      doc = Docx::Document.open(open(resume_url).path)
+    rescue OpenURI::HTTPError => e
+      puts "Can't access #{ resume_url }"
+      puts e.message
+      puts
+      return {'status'=> 'failed to read the file #{e.message}'}
+    end
+      
     resume_data = ""
     doc.paragraphs.each do |p|
       resume_data = resume_data + p.to_s
