@@ -1,6 +1,9 @@
 class OauthController < ApplicationController
   def webhook_testing
     Rails.logger.debug params.inspect
+    respond_to do |format|
+      format.json { head :ok }
+    end
   end
 
   def personality_insights(data)
