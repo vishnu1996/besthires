@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   match '/watson', to: 'oauth#watson', as: 'watson', via: [:get, :post]
   match '/watson_from_resume', to: 'oauth#watson_from_resume', as: 'watson_from_resume', via: [:get, :post]
   match '/logout', to: 'oauth#logout', as: 'session_logout', via: [:get, :delete]
-  post '/webhook_testing' to: 'oauth#webhook_testing'
+  post '/webhook_testing', to: 'oauth#webhook_testing'
 
 
   resource :password, only: %w( new create edit update ), path_names: { edit: 'reset' }
