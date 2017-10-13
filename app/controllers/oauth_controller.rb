@@ -1,4 +1,8 @@
 class OauthController < ApplicationController
+  def webhook_testing
+    Rails.logger.debug params.inspect
+  end
+
   def personality_insights(data)
     while data.gsub(/[^-a-zA-Z]/, ' ').split(' ').size < 600 do
       data = data + data
